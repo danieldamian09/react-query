@@ -1,0 +1,43 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #24282f;
+  height: 100%;
+  padding-bottom: 3rem;
+  min-height: 100vh;
+}
+
+h1 {
+  color: whitesmoke;
+  padding: 1rem;
+}
+
+#tarjeta {
+  border: 2px solid whitesmoke;
+  width: 70%;
+  border-radius: 12px;
+  display: flex;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  color: whitesmoke;
+  align-items: center;
+  justify-content: space-evenly;
+  max-width: 500px;
+}
+
+#tarjeta img {
+  border-radius: 50%;
+  width: 40%;
+}
+
+#tarjeta:hover {
+  cursor: pointer;
+  scale: 1.05;
+  box-shadow: 2px 2px 1px 1px whitesmoke;
+}
