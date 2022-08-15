@@ -1,33 +1,17 @@
-// Aquí nos importamos useQuery para poder utilizarlo en el componente.
-// Además, importamos la función que creamos para manejar el pedido a la API.
+import {useQuery} from "react-query"
+import { obtenerPersonajes } from '../service/personajes';
 import TarjetaPersonaje from "./TarjetaPersonaje";
 
-// Hasta ahora, estamos usando data hardcodeada para
-//renderizar los personajes. El ojetivo del ejercicio
-// es poder emplear useQuery para traernos esa data
-// de la API de Rick & Morty. Podrás encontrar el endpoint
-// a utilizar en el archivo personajes.js que se encuentra
-//dentro de la capreta "servicios"
-const data = {
-  results: [
-    {
-      id: 1,
-      name: "Rick Sanchez",
-      species: "Human",
-      image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-    }
-  ]
-};
-const isLoading = false;
-const error = null;
-
 const Grilla = () => {
-  // Utilizamos useQuery, pasandole como primer argumento un string
-  // que indica el nombre de nuestra query (esto lo usa para manejar el cache),
-  // y como segundo argumento le pasamos la función que creamos para realizar el
-  // request a la API.
-  // Aprovechamos las ventajas de destructuring para traernos la data (respuesta de la API),
-  // el estado de isLoaading y el error.
+
+
+  const { data, isLoading, error, isIdle, refetch } = useQuery("obtenerPersonajes", obtenerPersonajes, {
+    // enabled:false
+  })
+
+  // if (isIdle) {
+  //   return <button onClick={refetch}>Cargar Datos</button>
+  // }
 
   // Si se esta fetcheando la data, mostramos un mensaje de carga.
   if (isLoading) return <div>Cargando personajes...</div>;
