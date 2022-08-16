@@ -41,3 +41,26 @@ h1 {
   scale: 1.05;
   box-shadow: 2px 2px 1px 1px whitesmoke;
 }
+
+
+#botones {
+  width: 50%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+
+#botones button {
+  padding: 1rem;
+  border: 2px solid whitesmoke;
+  border-radius: 12px;
+  background-color: transparent;
+  color: whitesmoke;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+#botones button:hover {
+  cursor: pointer;
+  background-color: rgba(245, 245, 245, 0.534);
+}
