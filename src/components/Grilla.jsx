@@ -1,19 +1,28 @@
+import { useState } from 'react';
 import {useQuery} from "react-query";
 import {obtenerPersonajes} from "../service/personajes";
 import TarjetaPersonaje from "./TarjetaPersonaje";
 
 const Grilla = () => {
+
+	const [pagina, setPagina] = useState(1)
+
 	const {data, isLoading, error} = useQuery(
-		"obtenerPersonajes",
-		obtenerPersonajes
+		["obtenerPersonajes", pagina],
+		() => obtenerPersonajes(pagina),
+		{
+			// placeholderData:{results:[{id:1, name:"Daniel", species:"Humano"}]},
+			keepPreviousData: false,
+			initialData:{results:[{id:1, name:"Daniel", species:"Humano"}]},
+		}
 	);
 
 	const incrementarPagina = () => {
-		console.log("incrementar pagina");
+		setPagina((prevPagina) => Math.min(prevPagina + 1, data?.info?.pages))
 	};
 
 	const disminuirPagina = () => {
-		console.log("decrementar pagina");
+		setPagina((prevPagina) => Math.max(prevPagina - 1, 1))
 	};
 
 	if (isLoading) return <div>Cargando personajes...</div>;
